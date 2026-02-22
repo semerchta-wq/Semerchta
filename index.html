@@ -34,7 +34,6 @@
             background-color: var(--bg-offwhite);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden; /* Mencegah geser kanan-kiri di HP */
         }
 
         h1, h2, h3 { margin-bottom: 15px; color: var(--text-dark); }
@@ -51,7 +50,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 50px;
+            padding: 10px 50px; /* Padding disesuaikan untuk logo gambar */
             box-sizing: border-box;
             z-index: 1000;
             border-bottom: 3px solid transparent;
@@ -59,10 +58,12 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
+        /* Styling untuk dummy logo */
         .logo-img {
-            height: 45px;
+            height: 45px; /* Sesuaikan tinggi logomu di sini */
             width: auto;
             display: block;
+            background-color: #ffffff; /* Warna sementara jika gambar belum di-load */
             border-radius: 4px;
         }
 
@@ -105,13 +106,6 @@
         #home h1 { font-size: 3.5rem; margin-bottom: 10px; }
         #home h1 span { color: var(--color-pink); }
 
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
         .btn {
             display: inline-block;
             padding: 12px 30px;
@@ -124,7 +118,6 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(235, 40, 116, 0.3);
-            text-align: center;
         }
 
         .btn:hover {
@@ -137,6 +130,7 @@
             background-color: transparent;
             border: 2px solid var(--color-cyan);
             color: var(--color-cyan);
+            margin-left: 15px;
             box-shadow: none;
         }
 
@@ -180,7 +174,6 @@
             gap: 30px;
             max-width: 1000px;
             margin: 0 auto;
-            width: 100%;
         }
 
         .product-card {
@@ -196,13 +189,14 @@
         .product-card:nth-child(2) { border-bottom-color: var(--color-pink); }
         .product-card:nth-child(3) { border-bottom-color: var(--color-purple); }
 
+        /* Styling untuk foto produk */
         .product-img {
             width: 100%;
-            aspect-ratio: 1 / 1; 
-            object-fit: cover; 
+            aspect-ratio: 1 / 1; /* Membuat frame foto berbentuk persegi */
+            object-fit: cover; /* Memastikan foto tidak gepeng */
             border-radius: 8px;
             margin-bottom: 15px;
-            background-color: #f0f0f0; 
+            background-color: #f0f0f0; /* Warna placeholder */
             border: 1px solid #e1e5eb;
         }
 
@@ -216,7 +210,6 @@
         #contact {
             background-color: var(--bg-section-alt);
             align-items: center;
-            text-align: center;
         }
 
         #contact h2 {
@@ -246,6 +239,7 @@
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
+        /* Menggunakan palette warna untuk tombol sosmed */
         .btn-shopee { background-color: var(--color-lightblue); color: var(--text-dark); box-shadow: 0 4px 15px rgba(104, 205, 240, 0.3); }
         .btn-ig { background-color: var(--color-pink); box-shadow: 0 4px 15px rgba(235, 40, 116, 0.3); }
         .btn-tiktok { background-color: var(--color-purple); box-shadow: 0 4px 15px rgba(152, 81, 200, 0.3); }
@@ -266,51 +260,6 @@
             font-size: 0.9rem;
             color: #bdc3c7;
         }
-
-        /* =========================================
-           MOBILE RESPONSIVE (MEDIA QUERIES)
-           ========================================= */
-        @media screen and (max-width: 768px) {
-            /* Menyesuaikan Navbar agar logo di atas dan menu di bawahnya */
-            nav {
-                flex-direction: column;
-                padding: 15px 20px;
-            }
-
-            nav ul {
-                margin-top: 15px;
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            /* Mengurangi jarak padding luar agar lebih pas di layar HP */
-            section {
-                padding: 140px 20px 50px 20px; /* Padding atas ditambah agar tidak tertutup navbar yang makin tinggi */
-            }
-
-            /* Mengecilkan ukuran teks Hero */
-            #home h1 {
-                font-size: 2.2rem;
-            }
-
-            /* Menyusun tombol Landing Page menjadi vertikal */
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-            }
-
-            /* Mengecilkan judul halaman */
-            #about h2, #products h2, #contact h2 {
-                font-size: 2rem;
-            }
-
-            /* Mengurangi padding kotak About */
-            .about-container {
-                padding: 30px 20px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -330,7 +279,7 @@
     <section id="home">
         <h1>Welcome to <span>SEMERCHTA</span></h1>
         <p>Inovasi Merchandise Masa Depan dengan Sentuhan Augmented Reality.</p>
-        <div class="hero-buttons">
+        <div>
             <a href="#products" class="btn">Explore Products</a>
             <a href="#contact" class="btn btn-outline">Order Now</a>
         </div>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEMERCHTA - Company Profile</title>
+    <style>
+        /* =========================================
+           COLOR PALETTE
+           ========================================= */
+        :root {
+            --color-cyan: #02a8eb;       
+            --color-pink: #eb2874;       
+            --color-purple: #9851c8;     
+            --color-lightblue: #68cdf0;  
+            --color-lightpink: #f598bf;  
+            
+            --bg-offwhite: #f8f9fa;      
+            --bg-section-alt: #ffffff;   
+            --text-dark: #2c3e50;        
+            --text-muted: #555555;       
+            --card-bg: #ffffff;
+        }
+
+        /* =========================================
+           GLOBAL STYLES
+           ========================================= */
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-offwhite);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 { margin-bottom: 15px; color: var(--text-dark); }
+        p { margin-bottom: 20px; color: var(--text-muted); }
+
+        /* =========================================
+           NAVIGATION BAR
+           ========================================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px; /* Padding disesuaikan untuk logo gambar */
+            box-sizing: border-box;
+            z-index: 1000;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(to right, var(--color-cyan), var(--color-pink), var(--color-purple), var(--color-lightblue), var(--color-lightpink)) 1;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Styling untuk dummy logo */
+        .logo-img {
+            height: 45px; /* Sesuaikan tinggi logomu di sini */
+            width: auto;
+            display: block;
+            background-color: #ffffff; /* Warna sementara jika gambar belum di-load */
+            border-radius: 4px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover { color: var(--color-pink); }
+
+        /* =========================================
+           SECTIONS (Halaman)
+           ========================================= */
+        section {
+            min-height: 100vh;
+            padding: 100px 50px 50px 50px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- 1. LANDING PAGE (HOME) --- */
+        #home {
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #ffffff 0%, var(--bg-offwhite) 100%);
+        }
+
+        #home h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        #home h1 span { color: var(--color-pink); }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-pink);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(235, 40, 116, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--color-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(152, 81, 200, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--color-cyan);
+            color: var(--color-cyan);
+            margin-left: 15px;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-cyan);
+            color: white;
+            box-shadow: 0 4px 15px rgba(2, 168, 235, 0.3);
+        }
+
+        /* --- 2. ABOUT US --- */
+        #about {
+            background-color: var(--bg-section-alt);
+            align-items: center;
+        }
+
+        .about-container {
+            max-width: 800px;
+            text-align: center;
+            padding: 50px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            border-top: 5px solid var(--color-purple);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        #about h2 { color: var(--color-purple); font-size: 2.5rem; }
+
+        /* --- 3. PRODUCTS --- */
+        #products { background-color: var(--bg-offwhite); }
+
+        #products h2 {
+            text-align: center;
+            color: var(--color-cyan);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid var(--color-cyan);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .product-card:nth-child(2) { border-bottom-color: var(--color-pink); }
+        .product-card:nth-child(3) { border-bottom-color: var(--color-purple); }
+
+        /* Styling untuk foto produk */
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Membuat frame foto berbentuk persegi */
+            object-fit: cover; /* Memastikan foto tidak gepeng */
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f0f0f0; /* Warna placeholder */
+            border: 1px solid #e1e5eb;
+        }
+
+        .product-card h3 { color: var(--text-dark); margin-bottom: 10px;}
+        .product-card:hover { 
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- 4. CONTACT (Socials & Shopee) --- */
+        #contact {
+            background-color: var(--bg-section-alt);
+            align-items: center;
+        }
+
+        #contact h2 {
+            color: var(--color-pink);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .social-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        /* Menggunakan palette warna untuk tombol sosmed */
+        .btn-shopee { background-color: var(--color-lightblue); color: var(--text-dark); box-shadow: 0 4px 15px rgba(104, 205, 240, 0.3); }
+        .btn-ig { background-color: var(--color-pink); box-shadow: 0 4px 15px rgba(235, 40, 116, 0.3); }
+        .btn-tiktok { background-color: var(--color-purple); box-shadow: 0 4px 15px rgba(152, 81, 200, 0.3); }
+        .btn-wa { background-color: var(--color-cyan); box-shadow: 0 4px 15px rgba(2, 168, 235, 0.3); }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            filter: brightness(1.1);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background-color: var(--text-dark);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home" class="logo">
+            <img src="Logo Semerchta.png" alt="SEMERCHTA Logo" class="logo-img">
+        </a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1>Welcome to <span>SEMERCHTA</span></h1>
+        <p>Inovasi Merchandise Masa Depan dengan Sentuhan Augmented Reality.</p>
+        <div>
+            <a href="#products" class="btn">Explore Products</a>
+            <a href="#contact" class="btn btn-outline">Order Now</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-container">
+            <h2>About Us</h2>
+            <p>SEMERCHTA adalah brand kreatif yang menggabungkan dunia fisik dan digital. Kami memproduksi berbagai merchandise eksklusif yang dirancang khusus untuk memiliki fitur Augmented Reality (AR) interaktif.</p>
+            <p>Berawal dari ide kreatif mahasiswa teknik, kami berkomitmen untuk memberikan pengalaman unik kepada setiap pelanggan melalui produk yang tidak hanya nyaman dipakai, tetapi juga "hidup" saat dilihat melalui lensa smartphone.</p>
+        </div>
+    </section>
+
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="Produk Bilndbag.jpeg" alt="AR T-Shirt" class="product-img">
+                <h3>Blind Bag</h3>
+                <p>Sebuah kantong kecil yang berisi kado misteri, cocok untuk kamu yang suka gacha.</p>
+            </div>
+            <div class="product-card">
+                <img src="Produk Sticker.jpeg" alt="AR Hoodie" class="product-img">
+                <h3>Sticker Pack</h3>
+                <p>Sticker pack yang berisi 5 ekspresi maskot dari brand SEMERCHTA.</p>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400.png?text=Foto+Aksesoris" alt="Accessories" class="product-img">
+                <h3>Accessories</h3>
+                <p>Gantungan kunci, stiker, dan totebag interaktif yang menyimpan elemen kejutan digital.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Connect & Shop</h2>
+        <p>Temukan produk kami dan ikuti update terbaru SEMERCHTA di sini:</p>
+        
+        <div class="social-container">
+            <a href="https://shopee.co.id/semerchta" class="social-btn btn-shopee">Beli di Shopee</a>
+            <a href="https://www.instagram.com/semerchta/" class="social-btn btn-ig">Instagram</a>
+            <a href="https://www.tiktok.com/@semerchta?lang=en" class="social-btn btn-tiktok">TikTok</a>
+            <a href="https://www.facebook.com/profile.php?id=61581478342318" class="social-btn btn-wa">Facebook</a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 SEMERCHTA. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
